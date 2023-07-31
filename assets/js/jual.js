@@ -24,7 +24,9 @@ $(document).ready(function () {
 
 	$("#lastTable").DataTable({
 		responsive: true,
-		pageLength: 10,
+		// paging: false,
+		// pageLength: [10],
+		recordsTotal: 10,
 		lengthChange: false,
 		ajax: `dashboard/getDashboard`,
 		columns: [

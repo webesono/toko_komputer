@@ -64,11 +64,11 @@ class Dashboard extends CI_Controller
         // die;
         $data = [];
 
-        foreach ($query->result_array() as $key => $r) {
+        foreach (array_slice($query->result_array(), 0, 10) as $key => $r) {
             $detailJual = $this->m_jual->getDetailPenjualan($r['id'])->result_array();
             $total = 0;
-            foreach ($detailJual as $key => $r) {
-                $total += (int)$r['harga_jual'] * $r['jumlah'];
+            foreach ($detailJual as $p) {
+                $total += (int)$p['harga_jual'] * $p['jumlah'];
             }
 
             $data[] = array(
