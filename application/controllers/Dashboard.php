@@ -56,6 +56,8 @@ class Dashboard extends CI_Controller
     public function getDashboard()
     {
 
+        setlocale(LC_TIME, 'id_ID');
+
         $draw = intval($this->input->get("draw"));
         $start = intval($this->input->get("start"));
         $length = intval($this->input->get("length"));
@@ -75,7 +77,7 @@ class Dashboard extends CI_Controller
                 'no' => $key + 1,
                 'konsumen' => $r['nama_konsumen'],
                 'alamat' => $r['alamat'],
-                'tgl_jual' => $r['tanggal_penjualan'],
+                'tgl_jual' => date('d F Y', strtotime($r['tanggal_penjualan'])),
                 'total' => rupiah($total)
             );
         }
